@@ -44,16 +44,16 @@ public class Player extends Entity {
     public boolean moved = false;
 
     public Player() {
-        super(0, 0, 16, 16, Entity.PLAYER_EN);
-        this.setMask(1, 1, 14, 14);
+        super(0, 0, 32, 32, Entity.PLAYER_EN);
+        this.setMask(1, 1, 31, 31);
         this.setSpeed(1.2);
 
         rightPlayer = new BufferedImage[maxAnimation + 1];
         leftPlayer = new BufferedImage[maxAnimation + 1];
 
         for (int i = 0; i < maxAnimation; i++) {
-            leftPlayer[i] = spritePlayer.getSprite((i * 17) + 18, 1, 16, 16);
-            rightPlayer[i] = spritePlayer.getSprite((i * 17) + 18, 18, 16, 16);
+            leftPlayer[i] = spritePlayer.getSprite((i * 33) + 34, 1, 32, 32);
+            rightPlayer[i] = spritePlayer.getSprite((i * 33) + 34, 34, 32, 32);
 
         }
     }
@@ -167,10 +167,14 @@ public class Player extends Entity {
             }
         }
 
+        if (interact) {
+            interact = false;
+        }
+
         Camera.x = Camera.clamp((int) this.getX() - (GameController.WIDTH / 2), 0,
-                World.WIDTH * 16 - GameController.WIDTH);
+                World.WIDTH * 32 - GameController.WIDTH);
         Camera.y = Camera.clamp((int) this.getY() - (GameController.HEIGHT / 2), 0,
-                World.HEIGHT * 16 - GameController.HEIGHT);
+                World.HEIGHT * 32 - GameController.HEIGHT);
 
     }
 

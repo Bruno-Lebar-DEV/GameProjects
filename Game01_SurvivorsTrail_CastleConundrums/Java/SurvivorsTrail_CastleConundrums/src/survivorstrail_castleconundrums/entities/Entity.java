@@ -13,8 +13,8 @@ public class Entity {
     protected static Spritesheet spritePlayer = new Spritesheet("/entidades/Player.png");
     protected static Spritesheet spriteEnemy = new Spritesheet("/entidades/Inimigo.png");
 
-    public static BufferedImage ENEMY_EN = spriteEnemy.getSprite(1, 1, 16, 16);
-    public static BufferedImage PLAYER_EN = spritePlayer.getSprite(1, 1, 16, 16);
+    public static BufferedImage ENEMY_EN = spriteEnemy.getSprite(1, 1, 32, 32);
+    public static BufferedImage PLAYER_EN = spritePlayer.getSprite(1, 1, 32, 32);
 
     protected double x;
     protected double y;

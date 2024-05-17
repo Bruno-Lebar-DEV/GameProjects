@@ -23,7 +23,7 @@ public class World {
     public static int WIDTH;
     public static int HEIGHT;
 
-    public static final int TILE_SIZE = 16;
+    public static final int TILE_SIZE = 32;
 
     private static final int PLAYER = 0xFF404040;
     private static final int PORTA_SAIDA = 0xFFFFD800;
@@ -53,48 +53,48 @@ public class World {
                     int pixelAtual = pixels[_x + (_y * WIDTH)];
 
                     if (pixelAtual == CHAO) {
-                        tiles[_x + (_y * WIDTH)] = new FloorTile(_x * 16, _y * 16, Tile.TILE_FLOOR);
+                        tiles[_x + (_y * WIDTH)] = new FloorTile(_x * TILE_SIZE, _y * TILE_SIZE, Tile.TILE_FLOOR);
 
                     } else if (pixelAtual == PAREDE) {
-                        tiles[_x + (_y * WIDTH)] = new WallTile(_x * 16, _y * 16, Tile.TILE_WALL);
+                        tiles[_x + (_y * WIDTH)] = new WallTile(_x * TILE_SIZE, _y * TILE_SIZE, Tile.TILE_WALL);
 
                     } else if (pixelAtual == AGUA) {
-                        tiles[_x + (_y * WIDTH)] = new WallTile(_x * 16, _y * 16, Tile.TILE_WATER);
+                        tiles[_x + (_y * WIDTH)] = new WallTile(_x * TILE_SIZE, _y * TILE_SIZE, Tile.TILE_WATER);
 
                     } else {
                        
-                        tiles[_x + (_y * WIDTH)] = new FloorTile(_x * 16, _y * 16, Tile.TILE_FLOOR);
+                        tiles[_x + (_y * WIDTH)] = new FloorTile(_x * TILE_SIZE, _y * TILE_SIZE, Tile.TILE_FLOOR);
 
                         if (pixelAtual == PLAYER) {
-                            Game.player.setX(_x * 16);
-                            Game.player.setY(_y * 16);
+                            Game.player.setX(_x * TILE_SIZE);
+                            Game.player.setY(_y * TILE_SIZE);
 
                         } else if (pixelAtual == PORTA_SAIDA) {
-                            PortaSaida porta = new PortaSaida(_x * 16, _y * 16, 32, 32);
+                            PortaSaida porta = new PortaSaida(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                             Game.portaSaida = porta;
 
                         } else if (pixelAtual == INIMIGO) {
-                            Enemy enemy = new Enemy(_x * 16, _y * 16, 16, 16, Entity.ENEMY_EN);
+                            Enemy enemy = new Enemy(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE, Entity.ENEMY_EN);
                             Game.entities.add(enemy);
 
                         } else if (pixelAtual == BOTAO_VERDE) {
-                            BotaoVerde botao = new BotaoVerde(_x * 16, _y * 16, 32, 32);
+                            BotaoVerde botao = new BotaoVerde(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                             Game.itens.add(botao);
 
                         } else if (pixelAtual == BOTAO_VERMELHO) {
-                            BotaoVermelho botao = new BotaoVermelho(_x * 16, _y * 16, 32, 32);
+                            BotaoVermelho botao = new BotaoVermelho(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                             Game.itens.add(botao);
 
                         } else if (pixelAtual == BOTAO_AZUL) {
-                            BotaoAzul botao = new BotaoAzul(_x * 16, _y * 16, 32, 32);
+                            BotaoAzul botao = new BotaoAzul(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                             Game.itens.add(botao);
 
                         } else if (pixelAtual == ALAVANCA) {
-                            Alavanca alavanca = new Alavanca(_x * 16, _y * 16, 32, 32);
+                            Alavanca alavanca = new Alavanca(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                             Game.itens.add(alavanca);
 
                         } else if (pixelAtual == PLATAFORMA) {
-                            Plataforma plataforma = new Plataforma(_x * 16, _y * 16, 32, 32);
+                            Plataforma plataforma = new Plataforma(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                             Game.itens.add(plataforma);
                         }
 
@@ -131,10 +131,10 @@ public class World {
     }
 
     public void render(Graphics g) {
-        int xStart = Camera.x >> 4;
-        int yStart = Camera.y >> 4;
-        int xFinal = xStart + (GameController.WIDTH >> 4);
-        int yFinal = yStart + (GameController.HEIGHT >> 4);
+        int xStart = Camera.x >> 5;
+        int yStart = Camera.y >> 5;
+        int xFinal = xStart + (GameController.WIDTH >> 5);
+        int yFinal = yStart + (GameController.HEIGHT >> 5);
 
         for (int _x = xStart; _x <= xFinal; _x++) {
             for (int _y = yStart; _y <= yFinal; _y++) {

@@ -41,8 +41,8 @@ public class UI {
             if (item.showMensagem) {
                 g.setColor(Color.BLACK);
                 g.setFont(Fonts.Arial20b);
-                g.drawString(item.Mensagem, ((int) item.getX() + item.maskX - Camera.x + 16) * GameController.SCALE,
-                        ((int) item.getY() + item.maskY - Camera.y + 16) * GameController.SCALE);
+                g.drawString(item.Mensagem, ((int) item.getX() + item.maskX - Camera.x + 32) * GameController.SCALE,
+                        ((int) item.getY() + item.maskY - Camera.y + 32) * GameController.SCALE);
             }
         }
     }

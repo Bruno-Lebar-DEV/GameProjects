@@ -53,7 +53,7 @@ public class Game {
         }
 
         porta_liberada = false;
-        portaSaida = new PortaSaida(256, 16, 32, 32);
+        portaSaida = new PortaSaida(256, 32, 32, 32);
         entities = new ArrayList<Entity>();
         itens = new ArrayList<Itens>();
         world = new World("/level" + LOAD_LEVEL + ".png");
@@ -61,7 +61,7 @@ public class Game {
 
     public static void resetLevel() {
         porta_liberada = false;
-        portaSaida = new PortaSaida(256, 16, 32, 32);
+        portaSaida = new PortaSaida(256, 32, 32, 32);
         entities = new ArrayList<Entity>();
         itens = new ArrayList<Itens>();
         world = new World("/level" + LOAD_LEVEL + ".png");

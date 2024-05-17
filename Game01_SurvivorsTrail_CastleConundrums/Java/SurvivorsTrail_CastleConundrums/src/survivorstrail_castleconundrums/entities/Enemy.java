@@ -41,8 +41,8 @@ public class Enemy extends Entity {
         damageEnemy = new BufferedImage[maxAnimation + 1];
 
         for (int i = 0; i < maxAnimation; i++) {
-            movedEnemy[i] = spriteEnemy.getSprite((i * 17) + 18, (this.enemyType * 17) + 1, 16, 16);
-            damageEnemy[i] = spriteEnemy.getSprite((i * 17) + 18, 69, 16, 16);
+            movedEnemy[i] = spriteEnemy.getSprite((i * 33) + 34, (this.enemyType * 33) + 1, 32, 32);
+            damageEnemy[i] = spriteEnemy.getSprite((i * 33) + 34, 69, 32, 32);
         }
     }
 
