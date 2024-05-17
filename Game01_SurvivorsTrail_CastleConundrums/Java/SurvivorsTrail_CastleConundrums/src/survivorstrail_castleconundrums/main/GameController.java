@@ -35,8 +35,8 @@ public class GameController extends Canvas implements Runnable, KeyListener {
     public static final int HEIGHT = 160;
     public static final int SCALE = 3;
 
-    public static final boolean DEV_SHOW_COLIDERS = true;
-    public static final boolean DEV_SHOW_FPS = true;
+    public static final boolean DEV_SHOW_COLIDERS = false;
+    public static final boolean DEV_SHOW_FPS = false;
     public static final boolean DEV_DEBUG = true;
 
     public GameController() {
@@ -231,7 +231,7 @@ public class GameController extends Canvas implements Runnable, KeyListener {
 
         if (e.getKeyCode() == KeyEvent.VK_I)
             if (getGameMode() == GAMEMODE_GAME)
-                Game.player.interct = true;
+                Game.player.interact = true;
 
         if (DEV_DEBUG)
             if (e.getKeyCode() == KeyEvent.VK_PAGE_UP)
@@ -255,10 +255,6 @@ public class GameController extends Canvas implements Runnable, KeyListener {
             } else if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 Game.player.moveRight = false;
             }
-
-            if (e.getKeyCode() == KeyEvent.VK_I)
-                if (getGameMode() == GAMEMODE_GAME)
-                    Game.player.interct = false;
 
             if (DEV_DEBUG)
                 if (e.getKeyCode() == KeyEvent.VK_PAGE_UP)

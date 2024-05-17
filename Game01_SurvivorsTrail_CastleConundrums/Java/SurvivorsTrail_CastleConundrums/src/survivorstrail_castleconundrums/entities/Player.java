@@ -2,8 +2,10 @@ package survivorstrail_castleconundrums.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import survivorstrail_castleconundrums.Itens.Itens;
 import survivorstrail_castleconundrums.main.Game;
 import survivorstrail_castleconundrums.main.GameController;
 import survivorstrail_castleconundrums.world.Camera;
@@ -15,7 +17,7 @@ public class Player extends Entity {
     public boolean moveDown = false;
     public boolean moveLeft = false;
     public boolean moveRight = false;
-    public boolean interct = false;
+    public boolean interact = false;
 
     private final int maxAnimation = 4;
     private final int maxFrames = 5;
@@ -40,7 +42,6 @@ public class Player extends Entity {
     public boolean mouseShoot = false;
     public boolean weapon = false;
     public boolean moved = false;
-    public boolean isDamage = false;
 
     public Player() {
         super(0, 0, 16, 16, Entity.PLAYER_EN);
@@ -57,22 +58,74 @@ public class Player extends Entity {
         }
     }
 
+    public boolean isColiddingItens(double x, double y, Itens item) {
+
+        Rectangle e1Mask = new Rectangle((int) x + this.maskX - Camera.x,
+                (int) y + this.maskY - Camera.y,
+                this.maskW, this.maskH);
+        Rectangle e2Mask = new Rectangle((int) item.getX() + item.maskX - Camera.x,
+                (int) item.getY() + item.maskY - Camera.y,
+                item.maskW, item.maskH);
+
+        if (GameController.DEV_SHOW_COLIDERS)
+            if (e1Mask.intersects(e2Mask))
+                System.out.println("Colisão");
+
+        return e1Mask.intersects(e2Mask);
+    }
+
+    public boolean isColiddingNextLevel(double x, double y, Itens item) {
+
+        Rectangle e1Mask = new Rectangle((int) x + this.maskX - Camera.x,
+                (int) y + this.maskY - Camera.y,
+                this.maskW, this.maskH);
+        Rectangle e2Mask = new Rectangle((int) item.getX() + item.maskX + 8 - Camera.x,
+                (int) item.getY() + item.maskY + 8 - Camera.y,
+                item.maskW - 8, item.maskH - 8);
+
+        if (GameController.DEV_SHOW_COLIDERS)
+            if (e1Mask.intersects(e2Mask))
+                System.out.println("Colisão");
+
+        return e1Mask.intersects(e2Mask);
+    }
+
+    private boolean podeAndar(double x, double y) {
+        // verifica se pode andar pelos blocos
+        if (!World.isFree(x, y))
+            return false;
+
+        // verifica se pode andar na porta de saida
+        if (Game.portaSaida.isColision() && isColiddingItens(x, y, Game.portaSaida))
+            return false;
+
+        // verifica se pode andar nos itens
+        for (int i = 0; i < Game.itens.size(); i++) {
+
+            if (Game.itens.get(i).isColision() && isColiddingItens(x, y, Game.itens.get(i))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public void tick() {
         moved = false;
 
-        if (moveUp && World.isFree(this.getX(), this.getY() - this.getSpeed())) {
+        if (moveUp && podeAndar(this.getX(), this.getY() - this.getSpeed())) {
             moved = true;
             this.setY(getY() - this.getSpeed());
-        } else if (moveDown && World.isFree(this.getX(), this.getY() + this.getSpeed())) {
+        } else if (moveDown && podeAndar(this.getX(), this.getY() + this.getSpeed())) {
             moved = true;
             this.setY(getY() + this.getSpeed());
         }
 
-        if (moveLeft && World.isFree(this.getX() - (int) this.getSpeed(), this.getY())) {
+        if (moveLeft && podeAndar(this.getX() - (int) this.getSpeed(), this.getY())) {
             moved = true;
             dir = left_dir;
             this.setX(getX() - this.getSpeed());
-        } else if (moveRight && World.isFree(this.getX() + (int) this.getSpeed(), this.getY())) {
+        } else if (moveRight && podeAndar(this.getX() + (int) this.getSpeed(), this.getY())) {
             moved = true;
             dir = right_dir;
             this.setX(getX() + this.getSpeed());
@@ -91,6 +144,27 @@ public class Player extends Entity {
 
         for (int i = 0; i < Game.entities.size(); i++) {
             isColidding(this, Game.entities.get(i));
+        }
+
+        if (isColiddingNextLevel(x, y, Game.portaSaida)) {
+            Game.nextLevel();
+        }
+
+        for (int i = 0; i < Game.itens.size(); i++) {
+            if (isColiddingItens(this.x, this.y, Game.itens.get(i))) {
+                if (Game.itens.get(i).isInteragivel) {
+                    if (interact) {
+                        interact = false;
+                        if (Game.itens.get(i).isAtivo())
+                            Game.itens.get(i).Disable();
+                        else
+                            Game.itens.get(i).Enable();
+                    }
+                } else {
+                    if (!Game.itens.get(i).isAtivo())
+                        Game.itens.get(i).Enable();
+                }
+            }
         }
 
         Camera.x = Camera.clamp((int) this.getX() - (GameController.WIDTH / 2), 0,

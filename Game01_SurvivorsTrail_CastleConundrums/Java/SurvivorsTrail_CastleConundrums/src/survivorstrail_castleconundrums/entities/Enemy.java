@@ -96,7 +96,6 @@ public class Enemy extends Entity {
             atack = true;
             if (Game.rand.nextInt(100) < 10) {
                 Game.player.life -= Game.rand.nextInt(5);
-                Game.player.isDamage = true;
             }
         }
 

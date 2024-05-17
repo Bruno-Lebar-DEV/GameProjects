@@ -6,6 +6,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import survivorstrail_castleconundrums.Itens.Alavanca;
+import survivorstrail_castleconundrums.Itens.BotaoAzul;
+import survivorstrail_castleconundrums.Itens.BotaoVerde;
+import survivorstrail_castleconundrums.Itens.BotaoVermelho;
+import survivorstrail_castleconundrums.Itens.Plataforma;
+import survivorstrail_castleconundrums.Itens.PortaSaida;
 import survivorstrail_castleconundrums.entities.Enemy;
 import survivorstrail_castleconundrums.entities.Entity;
 import survivorstrail_castleconundrums.main.Game;
@@ -16,12 +22,21 @@ public class World {
     public static Tile[] tiles;
     public static int WIDTH;
     public static int HEIGHT;
+
     public static final int TILE_SIZE = 16;
-    private static int CHAO = 0xFF000000;
-    private static int PAREDE = 0xFFFFFFFF;
-    private static int AGUA = 0xFF00FFFF;
-    private static int PLAYER = 0xFF3300FF;
-    private static int INIMIGO = 0xFFFF0000;
+
+    private static final int PLAYER = 0xFF404040;
+    private static final int PORTA_SAIDA = 0xFFFFD800;
+
+    private static final int CHAO = 0xFF000000;
+    private static final int PAREDE = 0xFFFFFFFF;
+    private static final int AGUA = 0xFF00FFFF;
+    private static final int INIMIGO = 0xFFFF0000;
+    private static final int BOTAO_VERDE = 0xFF00FF21;
+    private static final int BOTAO_VERMELHO = 0xFFFF6A00;
+    private static final int BOTAO_AZUL = 0xFF0094FF;
+    private static final int ALAVANCA = 0xFFFF00DC;
+    private static final int PLATAFORMA = 0xFFB200FF;
 
     public World(String path) {
         try {
@@ -44,19 +59,46 @@ public class World {
                         tiles[_x + (_y * WIDTH)] = new WallTile(_x * 16, _y * 16, Tile.TILE_WALL);
 
                     } else if (pixelAtual == AGUA) {
-                        tiles[_x + (_y * WIDTH)] = new FloorTile(_x * 16, _y * 16, Tile.TILE_WATER);
+                        tiles[_x + (_y * WIDTH)] = new WallTile(_x * 16, _y * 16, Tile.TILE_WATER);
 
                     } else {
+                       
+                        tiles[_x + (_y * WIDTH)] = new FloorTile(_x * 16, _y * 16, Tile.TILE_FLOOR);
+
                         if (pixelAtual == PLAYER) {
                             Game.player.setX(_x * 16);
                             Game.player.setY(_y * 16);
 
+                        } else if (pixelAtual == PORTA_SAIDA) {
+                            PortaSaida porta = new PortaSaida(_x * 16, _y * 16, 32, 32);
+                            Game.portaSaida = porta;
+
                         } else if (pixelAtual == INIMIGO) {
                             Enemy enemy = new Enemy(_x * 16, _y * 16, 16, 16, Entity.ENEMY_EN);
                             Game.entities.add(enemy);
+
+                        } else if (pixelAtual == BOTAO_VERDE) {
+                            BotaoVerde botao = new BotaoVerde(_x * 16, _y * 16, 32, 32);
+                            Game.itens.add(botao);
+
+                        } else if (pixelAtual == BOTAO_VERMELHO) {
+                            BotaoVermelho botao = new BotaoVermelho(_x * 16, _y * 16, 32, 32);
+                            Game.itens.add(botao);
+
+                        } else if (pixelAtual == BOTAO_AZUL) {
+                            BotaoAzul botao = new BotaoAzul(_x * 16, _y * 16, 32, 32);
+                            Game.itens.add(botao);
+
+                        } else if (pixelAtual == ALAVANCA) {
+                            Alavanca alavanca = new Alavanca(_x * 16, _y * 16, 32, 32);
+                            Game.itens.add(alavanca);
+
+                        } else if (pixelAtual == PLATAFORMA) {
+                            Plataforma plataforma = new Plataforma(_x * 16, _y * 16, 32, 32);
+                            Game.itens.add(plataforma);
                         }
 
-                        tiles[_x + (_y * WIDTH)] = new FloorTile(_x * 16, _y * 16, Tile.TILE_FLOOR);
+                       
                     }
 
                 }
