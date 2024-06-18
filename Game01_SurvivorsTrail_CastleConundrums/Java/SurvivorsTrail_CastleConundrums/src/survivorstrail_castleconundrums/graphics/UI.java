@@ -3,7 +3,7 @@ package survivorstrail_castleconundrums.graphics;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import survivorstrail_castleconundrums.Itens.Itens;
+import survivorstrail_castleconundrums.entities.Itens;
 import survivorstrail_castleconundrums.main.Game;
 import survivorstrail_castleconundrums.main.GameController;
 import survivorstrail_castleconundrums.world.Camera;

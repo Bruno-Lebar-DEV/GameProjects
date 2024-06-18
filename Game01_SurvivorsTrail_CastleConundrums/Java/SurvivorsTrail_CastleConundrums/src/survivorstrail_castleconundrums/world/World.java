@@ -6,14 +6,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import survivorstrail_castleconundrums.Itens.Alavanca;
-import survivorstrail_castleconundrums.Itens.BotaoAzul;
-import survivorstrail_castleconundrums.Itens.BotaoVerde;
-import survivorstrail_castleconundrums.Itens.BotaoVermelho;
-import survivorstrail_castleconundrums.Itens.Plataforma;
-import survivorstrail_castleconundrums.Itens.PortaSaida;
 import survivorstrail_castleconundrums.entities.Enemy;
 import survivorstrail_castleconundrums.entities.Entity;
+import survivorstrail_castleconundrums.entities.PortaSaida;
+import survivorstrail_castleconundrums.entities.itens.Alavanca;
+import survivorstrail_castleconundrums.entities.itens.BotaoAzul;
+import survivorstrail_castleconundrums.entities.itens.BotaoVerde;
+import survivorstrail_castleconundrums.entities.itens.BotaoVermelho;
+import survivorstrail_castleconundrums.entities.itens.Plataforma;
 import survivorstrail_castleconundrums.main.Game;
 import survivorstrail_castleconundrums.main.GameController;
 
@@ -70,7 +70,7 @@ public class World {
                             Game.player.setY(_y * TILE_SIZE);
 
                         } else if (pixelAtual == PORTA_SAIDA) {
-                            PortaSaida porta = new PortaSaida(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                            PortaSaida porta = new PortaSaida(_x * TILE_SIZE, _y * TILE_SIZE, 64, 32);
                             Game.portaSaida = porta;
 
                         } else if (pixelAtual == INIMIGO) {
@@ -94,7 +94,7 @@ public class World {
                             Game.itens.add(alavanca);
 
                         } else if (pixelAtual == PLATAFORMA) {
-                            Plataforma plataforma = new Plataforma(_x * TILE_SIZE, _y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                            Plataforma plataforma = new Plataforma(_x * TILE_SIZE, _y * TILE_SIZE, 64, 64);
                             Game.itens.add(plataforma);
                         }
 

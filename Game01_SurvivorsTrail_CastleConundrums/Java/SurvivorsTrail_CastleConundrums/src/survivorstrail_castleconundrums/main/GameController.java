@@ -31,9 +31,9 @@ public class GameController extends Canvas implements Runnable, KeyListener {
     public static JFrame frame;
     public static BufferedImage bufferedImage;
 
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 480;
-    public static final int SCALE = 2;
+    public static final int WIDTH = 480;
+    public static final int HEIGHT = 320;
+    public static final int SCALE = 3;
 
     public static final boolean DEV_SHOW_COLIDERS = false;
     public static final boolean DEV_SHOW_FPS = false;

@@ -10,7 +10,7 @@ import survivorstrail_castleconundrums.world.Camera;
 
 public class Entity {
 
-    protected static Spritesheet spritePlayer = new Spritesheet("/entidades/Player.png");
+    protected static Spritesheet spritePlayer = new Spritesheet("/entidades/Player1.png");
     protected static Spritesheet spriteEnemy = new Spritesheet("/entidades/Inimigo.png");
 
     public static BufferedImage ENEMY_EN = spriteEnemy.getSprite(1, 1, 32, 32);

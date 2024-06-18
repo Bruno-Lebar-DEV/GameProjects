@@ -1,4 +1,4 @@
-package survivorstrail_castleconundrums.Itens;
+package survivorstrail_castleconundrums.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,42 +8,44 @@ import survivorstrail_castleconundrums.graphics.Spritesheet;
 import survivorstrail_castleconundrums.main.GameController;
 import survivorstrail_castleconundrums.world.Camera;
 
-public class Itens {
+public class Itens extends Entity {
 
+    protected static Spritesheet spritePlataforma = new Spritesheet("/entidades/plataforma.png");
     protected static Spritesheet spriteItens = new Spritesheet("/entidades/Itens.png");
 
     public static BufferedImage BOTAO_VERMELHO_DISABLE = spriteItens.getSprite(1, 1, 32, 32);
     public static BufferedImage BOTAO_AZUL_DISABLE = spriteItens.getSprite(34, 1, 32, 32);
     public static BufferedImage BOTAO_VERDE_DISABLE = spriteItens.getSprite(67, 1, 32, 32);
     public static BufferedImage BOTAO_ENABLE = spriteItens.getSprite(100, 1, 32, 32);
-
     public static BufferedImage ALAVANCA_DISABLE = spriteItens.getSprite(1, 34, 32, 32);
     public static BufferedImage ALAVANCA_ENABLE = spriteItens.getSprite(34, 34, 32, 32);
-    public static BufferedImage PLATAFORMA_DISABLE = spriteItens.getSprite(67, 34, 32, 32);
-    public static BufferedImage PLATAFORMA_ENABLE = spriteItens.getSprite(100, 34, 32, 32);
-
-    public static BufferedImage PORTA_DISABLE = spriteItens.getSprite(1, 67, 32, 32);
-    public static BufferedImage PORTA_ENABLE = spriteItens.getSprite(34, 67, 32, 32);
+    public static BufferedImage PLATAFORMA_DISABLE = spritePlataforma.getSprite(1, 1, 64, 64);
+    public static BufferedImage PLATAFORMA_ENABLE = spritePlataforma.getSprite(66, 1, 64, 64);
+    public static BufferedImage PORTA_DISABLE = spriteItens.getSprite(2, 67, 64, 32);
+    public static BufferedImage PORTA_ENABLE = spriteItens.getSprite(67, 67, 64, 32);
 
     public int ID_RELATION = 0;
-    protected boolean enable = false;
-    protected boolean colision = false;
-    protected double x;
-    protected double y;
-    protected int width;
-    protected int height;
+    public boolean enable = false;
+    public boolean colision = false;
+    public boolean interagivel = false;
+    public boolean carregavel = false;
+    public double x;
+    public double y;
+    public int width;
+    public int height;
     public boolean isInteragivel = false;
     public int maskX;
     public int maskY;
     public int maskW;
     public int maskH;
-    protected BufferedImage spriteDisable;
-    protected BufferedImage spriteEnable;
+    public BufferedImage spriteDisable;
+    public BufferedImage spriteEnable;
 
     public boolean showMensagem = false;
     public String Mensagem = "";
 
     public Itens(double _x, double _y, int _width, int _height) {
+        super(_x, _y, _width, _height, Entity.PLAYER_EN);
         this.x = _x;
         this.y = _y;
         this.width = _width;

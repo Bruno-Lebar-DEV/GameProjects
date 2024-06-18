@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import survivorstrail_castleconundrums.Itens.Itens;
 import survivorstrail_castleconundrums.main.Game;
 import survivorstrail_castleconundrums.main.GameController;
 import survivorstrail_castleconundrums.world.Camera;
@@ -20,7 +19,7 @@ public class Player extends Entity {
     public boolean interact = false;
 
     private final int maxAnimation = 4;
-    private final int maxFrames = 5;
+    private final int maxFrames = 8;
     private int frames = 0;
     private int animation = 0;
     private BufferedImage[] rightPlayer;
@@ -46,14 +45,14 @@ public class Player extends Entity {
     public Player() {
         super(0, 0, 32, 32, Entity.PLAYER_EN);
         this.setMask(1, 1, 31, 31);
-        this.setSpeed(1.2);
+        this.setSpeed(2);
 
         rightPlayer = new BufferedImage[maxAnimation + 1];
         leftPlayer = new BufferedImage[maxAnimation + 1];
 
         for (int i = 0; i < maxAnimation; i++) {
-            leftPlayer[i] = spritePlayer.getSprite((i * 33) + 34, 1, 32, 32);
-            rightPlayer[i] = spritePlayer.getSprite((i * 33) + 34, 34, 32, 32);
+            leftPlayer[i] = spritePlayer.getSprite((i * 33)+1 , 1, 32, 32);
+            rightPlayer[i] = spritePlayer.getSprite((i * 33)+1 , 1, 32, 32);
 
         }
     }

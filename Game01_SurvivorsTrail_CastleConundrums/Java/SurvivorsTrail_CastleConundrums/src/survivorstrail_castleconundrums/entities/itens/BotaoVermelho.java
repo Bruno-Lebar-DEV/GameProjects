@@ -1,4 +1,6 @@
-package survivorstrail_castleconundrums.Itens;
+package survivorstrail_castleconundrums.entities.itens;
+
+import survivorstrail_castleconundrums.entities.Itens;
 
 public class BotaoVermelho extends Itens {
 
@@ -10,5 +12,8 @@ public class BotaoVermelho extends Itens {
         setSprites(Itens.BOTAO_VERMELHO_DISABLE, Itens.BOTAO_ENABLE);
     }
 
-   
+    public void tick() {
+        
+    }
+
 }

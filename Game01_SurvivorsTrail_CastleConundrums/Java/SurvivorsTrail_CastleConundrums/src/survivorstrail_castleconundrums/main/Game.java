@@ -4,16 +4,18 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 
-import survivorstrail_castleconundrums.Itens.Itens;
-import survivorstrail_castleconundrums.Itens.PortaSaida;
 import survivorstrail_castleconundrums.entities.Entity;
+import survivorstrail_castleconundrums.entities.Itens;
 import survivorstrail_castleconundrums.entities.Player;
+import survivorstrail_castleconundrums.entities.PortaSaida;
 import survivorstrail_castleconundrums.world.World;
 
 public class Game {
     public static int SAVE_LEVEL = 1;
     public static int LOAD_LEVEL = 1;
     public static int MAX_LEVEL = 10;
+    public static int DIFFICULT = 0;
+
 
     public static Random rand = new Random();
     public static Player player = new Player();;
@@ -34,12 +36,12 @@ public class Game {
     public static void newGame() {
         LOAD_LEVEL = 1;
         SAVE_LEVEL = 1;
-        world = new World("/level1.png");
+        carregaMapa(LOAD_LEVEL, DIFFICULT);
     }
 
     public static void loadGame() {
         LOAD_LEVEL = SAVE_LEVEL;
-        world = new World("/level" + SAVE_LEVEL + ".png");
+        carregaMapa(SAVE_LEVEL, DIFFICULT);
     }
 
     public static void saveGame() {
@@ -51,20 +53,37 @@ public class Game {
         if (LOAD_LEVEL > MAX_LEVEL) {
             LOAD_LEVEL = MAX_LEVEL;
         }
-
-        porta_liberada = false;
-        portaSaida = new PortaSaida(256, 32, 32, 32);
-        entities = new ArrayList<Entity>();
-        itens = new ArrayList<Itens>();
-        world = new World("/level" + LOAD_LEVEL + ".png");
+        carregaMapa(LOAD_LEVEL, DIFFICULT);
     }
 
     public static void resetLevel() {
+        carregaMapa(LOAD_LEVEL, DIFFICULT);
+    }
+
+    public static void carregaMapa(int level, int difficult) {
+        String diretorio = "";
+
+        switch (difficult) {
+            case 1:
+                diretorio = "/easy";
+                break;
+            case 2:
+                diretorio = "/normal";
+                break;
+            case 3:
+                diretorio = "/hard";
+                break;
+
+            default:
+                diretorio = "";
+                break;
+        }
+
         porta_liberada = false;
         portaSaida = new PortaSaida(256, 32, 32, 32);
         entities = new ArrayList<Entity>();
         itens = new ArrayList<Itens>();
-        world = new World("/level" + LOAD_LEVEL + ".png");
+        world = new World(diretorio + "/level" + level + ".png");
     }
 
     public void tick() {

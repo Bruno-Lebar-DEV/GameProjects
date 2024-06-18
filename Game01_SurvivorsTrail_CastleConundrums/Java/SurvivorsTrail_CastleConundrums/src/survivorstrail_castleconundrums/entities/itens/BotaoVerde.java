@@ -1,4 +1,6 @@
-package survivorstrail_castleconundrums.Itens;
+package survivorstrail_castleconundrums.entities.itens;
+
+import survivorstrail_castleconundrums.entities.Itens;
 
 public class BotaoVerde extends Itens {
 

@@ -1,4 +1,4 @@
-package survivorstrail_castleconundrums.Itens;
+package survivorstrail_castleconundrums.entities;
 
 import survivorstrail_castleconundrums.main.Game;
 
