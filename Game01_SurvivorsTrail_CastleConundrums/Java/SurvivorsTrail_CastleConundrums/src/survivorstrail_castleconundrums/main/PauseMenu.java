@@ -48,7 +48,7 @@ public class PauseMenu {
                     Game.resetLevel();
                     break;
 
-                case "SAVE GAME":
+                case "Save":
                     Game.saveGame();
                     break;
 
