@@ -1,0 +1,4 @@
+level:968
+life:98868
+ammo:868
+weapon:868

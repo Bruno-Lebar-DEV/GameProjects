@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "ZeldaClone/src",
+        "ZeldaClone/res"
+    ],
+    "java.dependency.packagePresentation": "flat"
+}
