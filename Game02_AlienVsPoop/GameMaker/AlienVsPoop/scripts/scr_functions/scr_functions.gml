@@ -13,8 +13,12 @@ function scr_functions(){
 	} else {
 		velz = 0;
 		z = 0;
+		
 		estado = estado_idle;
+		
+		return true;
 	}
+	return false;
 }
 
 

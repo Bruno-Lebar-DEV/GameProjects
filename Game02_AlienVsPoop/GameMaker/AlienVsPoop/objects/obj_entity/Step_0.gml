@@ -8,5 +8,4 @@ if (velx != 0) {
 estado();
 
 hitbox_x = x - (tam_hitbox_x/2);
-hitbox_y = y + z - 5 - tam_hitbox_y;
-
+hitbox_y = y+z - (tam_hitbox_y + (tam_hitbox_y * (1-hitbox_scale)));

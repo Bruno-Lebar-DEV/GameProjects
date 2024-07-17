@@ -14,11 +14,16 @@ z		= 0;
 face		= 1;
 estado	= noone;
 
-hitbox_x = 0;
-hitbox_y = 0;
+atacar	= noone;
 
-tam_hitbox_x = sprite_width-8;
-tam_hitbox_y = sprite_height-10;
+hitbox_scale = 1;
+
+tam_hitbox_x = sprite_width*hitbox_scale;
+tam_hitbox_y = sprite_height*hitbox_scale;
+
+hitbox_x = x - (tam_hitbox_x/2);
+hitbox_y = y+z - (tam_hitbox_y + (tam_hitbox_y * (1-hitbox_scale)));
+
 
 estado_main = function() {
 }

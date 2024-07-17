@@ -51,7 +51,7 @@
             "0":{"$MessageEventKeyframe":"","Events":[
                 "atacar",
               ],"resourceType":"MessageEventKeyframe","resourceVersion":"2.0",},
-          },"Disabled":false,"id":"d9709b4b-8af1-4cbd-93a9-fe8b292c40ad","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<MessageEventKeyframe>","resourceVersion":"2.0","Stretch":false,},
+          },"Disabled":false,"id":"a6ac7626-d1b8-499f-87d5-cc60286414e7","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<MessageEventKeyframe>","resourceVersion":"2.0","Stretch":false,},
       ],
       "resourceType":"KeyframeStore<MessageEventKeyframe>",
       "resourceVersion":"2.0",
@@ -94,7 +94,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":16,
-    "yorigin":49,
+    "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

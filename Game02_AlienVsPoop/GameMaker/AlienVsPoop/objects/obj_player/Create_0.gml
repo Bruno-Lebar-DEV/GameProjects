@@ -12,7 +12,10 @@ jump		= noone;
 punch	= noone;
 kick		= noone;
 
-atacar = noone;
+hitbox_scale = 0.6;
+tam_hitbox_x = sprite_width*hitbox_scale;
+tam_hitbox_y = sprite_height*hitbox_scale;
+
 
 controla_player = function(){
 	// Define teclas de controle
@@ -102,6 +105,10 @@ estado_jump = function(){
 estado_dive = function(){
 	sprite_index = spr_player_dive;
 	
+	if (is_struct(atacar)){
+		delete atacar;
+	}
+	
 	aplica_gravidade(grav*2);
 }
 
@@ -122,6 +129,9 @@ estado_punch = function(){
 		if (_combo){
 			estado = estado_jab;
 		}else{
+			if (is_struct(atacar)){
+				delete atacar;
+			}
 			estado = estado_idle;
 		}		
 	}
@@ -143,6 +153,10 @@ estado_jab = function(){
 	if (_combo){
 			estado = estado_punch;
 		}else{
+			if (is_struct(atacar)){
+				delete atacar;
+			}
+	
 			estado = estado_idle;
 		}		
 	}
@@ -158,42 +172,61 @@ estado_kick = function(){
 		sprite_index = spr_player_kick;
 	}
 	
-	if(image_index >= image_number-1)
+	if(image_index >= image_number-1){
+		if (is_struct(atacar)){
+			delete atacar;
+		}
 		estado = estado_idle;	
+	}
 }
 
 
 estado_jump_punch = function(){
-	vely = 0;
-	velz = 0;
 	
-	aplica_gravidade(grav*2);
-	
+	aplica_gravidade(grav);
+
 	if (sprite_index != spr_player_jump_punch){
 		image_index = 0;
 		sprite_index = spr_player_jump_punch;
+		velx = velx/2;
+		vely = 0;
+		velz = 0;
 	}
 	
-	if (image_index >= image_number -1){
-		estado = estado_dive;
+	if (image_index >= image_number-1){
+		if (is_struct(atacar)){
+			delete atacar;
+		}
+		estado = estado_dive;	
 	}
+
+	
 }
 
 
 estado_jump_kick = function(){
-	vely = 0;
 
-	
+
 	if (sprite_index != spr_player_jump_kick){
 		image_index = 0;
 		sprite_index = spr_player_jump_kick;
+		velx = velx/2;
 	}
 	
-	if (sprite_index == spr_player_jump_kick){
-		image_index = image_number - 1;
-		aplica_gravidade(grav*2);
+	if (image_index >= image_number - 2){
+		image_index = image_number - 2;		
+		vely = 0;
 		velx = face * max_velx/2;
-	}	
+	}
+
+	if aplica_gravidade(grav*3){
+		estado = estado_idle;
+		sprite_index = spr_player_idle;
+		if (is_struct(atacar)){
+			delete atacar;
+		}
+	}
+	
 }
 
 ajusta_fundo = function(){
@@ -205,8 +238,6 @@ ajusta_fundo = function(){
 	layer_x(_background, _x / 4);
 	layer_y(_background, _y / 4);
 }
-
-
 
 
 estado = estado_idle;
