@@ -1,4 +1,2 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-
+// INSTANCIO AS REGRAS DA ENTIDADE
 event_inherited();

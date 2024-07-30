@@ -1,11 +1,32 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
 
 if (velx != 0) {
 	face = sign(velx);
 }
 
+if(global.pause){
+	image_speed = 0;
+	velx = 0;
+	vely = 0;
+	exit;
+}else{
+	image_speed = 1;
+}
+
+if(obj_game_rules.cutscene == true){
+	velx = 0;
+	vely = 0;
+	exit;	
+}
+
+
+
 estado();
 
-hitbox_x = x - (tam_hitbox_x/2);
-hitbox_y = y+z - (tam_hitbox_y + (tam_hitbox_y * (1-hitbox_scale)));
+if (is_struct(hitbox)){
+	hitbox.atualiza_posicao_hitbox(x, y+z);
+}
+
+if (is_struct(atacar)){
+	atacar.atualiza_posicao();
+	atacar.verifica_area_colisao();
+}

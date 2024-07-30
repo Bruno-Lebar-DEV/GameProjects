@@ -1,8 +1,10 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-
-// Inherit the parent event
+// INSTANCIO AS REGRAS DA ENTIDADE
 event_inherited();
 
-// Area de Visao 
-draw_circle(x,y,area_visao,true);
+
+if (obj_game_rules.show_hitbox){
+
+	// DESENHA A AREA DE VISÃO DO INIMIGO
+	draw_circle(x,y,area_visao,true);
+}
+

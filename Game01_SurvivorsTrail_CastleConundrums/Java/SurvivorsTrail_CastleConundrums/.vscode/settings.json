@@ -6,5 +6,7 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
-    ]
+    ],
+    "totvsLanguageServer.welcomePage": false,
+    "totvsLanguageServer.editor.linter.includes": "C:\\Users\\bruno\\OneDrive - LOGOS TECHNOLOGY\\Documentos\\Acessos\\Etilux\\includes"
 }

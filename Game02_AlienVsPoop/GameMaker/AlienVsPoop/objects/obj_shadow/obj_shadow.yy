@@ -8,8 +8,8 @@
   "name":"obj_shadow",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Entities",
+    "path":"folders/Objetos/Entities.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -29,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_sombra",
+    "path":"sprites/spr_sombra/spr_sombra.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
