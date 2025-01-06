@@ -1,15 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_button_teste2",
+  "%Name":"obj_game",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_button_teste2",
+  "name":"obj_game",
   "overriddenProperties":[],
   "parent":{
-    "name":"Controles",
-    "path":"folders/Objetos/Controles.yy",
+    "name":"Game",
+    "path":"folders/Objetos/Game.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_button_game",
-    "path":"sprites/spr_button_game/spr_button_game.yy",
+    "name":"spr_game_rules",
+    "path":"sprites/spr_game_rules/spr_game_rules.yy",
   },
   "spriteMaskId":null,
   "visible":true,

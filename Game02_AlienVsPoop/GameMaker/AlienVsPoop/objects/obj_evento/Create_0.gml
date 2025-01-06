@@ -20,11 +20,11 @@ acao_spawner = function(){
 	for (var _i = 0; _i < _qtd_inm; _i++){
 		_inimigo = instance_create_layer(_x + (_i * 10) , _y + (_i * 20), "Inimigos", obj_enemy);
 		_inimigo = instance_create_layer(_x + (_i * 10) + 50 , _y + (_i * 20), "Inimigos", obj_enemy);
-		obj_game_rules.inimigos_vivos+=2;
+		obj_game.inimigos_vivos+=2;
 	}
 	
 	// Pare as entidades
-	obj_game_rules.cutscene = true;
+	obj_game.cutscene = true;
 	obj_camera.alvo_cutscene1 = _inimigo;
 	obj_camera.alvo_cutscene2 = obj_player;
 	obj_camera.estado = obj_camera.estado_cutscene;

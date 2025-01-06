@@ -7,7 +7,7 @@ if (life > 0) {
 	draw_healthbar(x-15, y+z-60, x+15, y+z - 65, _vida, c_black, c_red, c_green, false, true, true);
 }
 
-if(obj_game_rules.show_hitbox){
+if(obj_game.show_hitbox){
 	
 	// Desenha HitBox da Entidade
 	hitbox.desenha_hitbox();

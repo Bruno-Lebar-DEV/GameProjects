@@ -10,7 +10,7 @@ estado_idle = function(){
 	
 	break_object();
 	
-	var _inimigos = obj_game_rules.inimigos_vivos;
+	var _inimigos = obj_game.inimigos_vivos;
 	
 	
 	if(_inimigos <= 0){
@@ -85,7 +85,7 @@ estado_cutscene = function(){
 		exit;
 	}
 	
-	obj_game_rules.cutscene = false;
+	obj_game.cutscene = false;
 	estado = estado_idle;
 	
 }

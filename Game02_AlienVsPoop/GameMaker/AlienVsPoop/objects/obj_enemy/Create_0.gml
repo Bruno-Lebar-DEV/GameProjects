@@ -167,7 +167,7 @@ estado_dead = function(){
 	}
 	
 	if (image_alpha <= 0){
-		obj_game_rules.inimigos_vivos--;
+		obj_game.inimigos_vivos--;
 		instance_destroy();
 	}
 }

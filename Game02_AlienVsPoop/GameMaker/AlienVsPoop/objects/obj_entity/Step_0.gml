@@ -12,7 +12,7 @@ if(global.pause){
 	image_speed = 1;
 }
 
-if(obj_game_rules.cutscene == true){
+if(obj_game.cutscene == true){
 	velx = 0;
 	vely = 0;
 	exit;	

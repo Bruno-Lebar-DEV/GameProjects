@@ -10,8 +10,8 @@
   "name":"obj_joystick",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game",
-    "path":"folders/Objetos/Game.yy",
+    "name":"Controles",
+    "path":"folders/Objetos/Controles.yy",
   },
   "parentObjectId":null,
   "persistent":false,

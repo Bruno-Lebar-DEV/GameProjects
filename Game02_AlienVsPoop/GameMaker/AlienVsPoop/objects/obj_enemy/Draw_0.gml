@@ -2,7 +2,7 @@
 event_inherited();
 
 
-if (obj_game_rules.show_hitbox){
+if (obj_game.show_hitbox){
 
 	// DESENHA A AREA DE VISÃO DO INIMIGO
 	draw_circle(x,y,area_visao,true);

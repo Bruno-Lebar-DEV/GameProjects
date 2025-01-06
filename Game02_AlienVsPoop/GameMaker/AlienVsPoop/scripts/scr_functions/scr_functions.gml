@@ -155,20 +155,3 @@ function HitBox(_x1 = 0, _y1 = 0, _x2 = 0, _y2 = 0, _scale = 1) constructor{
 	}
 	
 }
-
-
-function verifica_toque(_id_obj = noone){
-	var _max_devices = 4;
-
-	for (var _i = 0; _i < _max_devices; _i++){
-		
-        var _touch_x = device_mouse_x_to_gui(_i);
-        var _touch_y = device_mouse_y_to_gui(_i);
-
-	   if (position_meeting(_touch_x, _touch_y, _id_obj)) 
-		return true;
-
-	}
-	
-	return false;
-}
